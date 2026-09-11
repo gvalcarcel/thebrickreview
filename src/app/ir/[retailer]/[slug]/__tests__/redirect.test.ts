@@ -4,7 +4,7 @@ import { SAMPLE_SETS } from "@/lib/posts";
 
 describe("Affiliate Redirection & Cloaking Tests", () => {
   it("TEST-001: should return HTTP 307 with proper location and legal headers", async () => {
-    const req = new Request("https://thebrickreview.com/ir/amazon/amazon-galaxy-explorer", {
+    const req = new Request("https://thebrickreview.com/ir/aliexpress/aliexpress-galaxy-explorer", {
       headers: {
         "referer": "https://thebrickreview.com/resenas/galaxy-explorer-10497",
         "user-agent": "Vitest-TestRunner/1.0",
@@ -12,8 +12,8 @@ describe("Affiliate Redirection & Cloaking Tests", () => {
     });
 
     const params = Promise.resolve({
-      retailer: "amazon",
-      slug: "amazon-galaxy-explorer",
+      retailer: "aliexpress",
+      slug: "aliexpress-galaxy-explorer",
     });
 
     const res = await GET(req, { params });
@@ -23,8 +23,7 @@ describe("Affiliate Redirection & Cloaking Tests", () => {
 
     // Location header points to destination affiliate URL
     const location = res.headers.get("Location");
-    expect(location).toContain("amazon.es");
-    expect(location).toContain("tag=thebrickreview-21");
+    expect(location).toContain("aliexpress.com");
 
     // Legal & SEO headers
     expect(res.headers.get("X-Robots-Tag")).toBe("noindex, nofollow");

@@ -74,7 +74,7 @@ export default function RootLayout({
 
             <div className="pt-6 border-t border-zinc-100 text-[11px] leading-relaxed text-zinc-400 space-y-2">
               <p>
-                <strong>Aviso de Afiliación y Transparencia:</strong> The Brick Review es un medio editorial independiente. Los enlaces hacia tiendas y distribuidores externos (como Amazon o la tienda oficial LEGO®) pueden generar una pequeña comisión para el sostenimiento de este cuaderno analítico, sin coste adicional para el lector.
+                <strong>Aviso de Afiliación y Transparencia:</strong> The Brick Review es un medio editorial independiente. Los enlaces hacia tiendas y distribuidores externos (como AliExpress o AliExpress Plaza) pueden generar una pequeña comisión para el sostenimiento de este cuaderno analítico, sin coste adicional para el lector.
               </p>
               <p>
                 LEGO® es una marca registrada del Grupo LEGO, que no patrocina, autoriza ni avala este sitio web independiente.

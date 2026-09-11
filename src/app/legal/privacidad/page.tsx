@@ -46,7 +46,7 @@ export default function PrivacyPage() {
             Este sitio web no inyecta cookies publicitarias ni píxeles de rastreo invasivo antes de tu navegación. Las únicas cookies utilizadas son de naturaleza técnica estrictamente necesarias para el funcionamiento del servidor, la caché y la seguridad de la sesión.
           </p>
           <p>
-            Al hacer clic en un enlace que te dirija a una tienda externa (como Amazon o LEGO Store), la plataforma de destino aplicará su propia política de cookies y privacidad conforme a sus términos de servicio.
+            Al hacer clic en un enlace que te dirija a una tienda externa (como AliExpress o AliExpress Plaza), la plataforma de destino aplicará su propia política de cookies y privacidad conforme a sus términos de servicio.
           </p>
         </section>
       </div>

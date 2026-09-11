@@ -34,7 +34,7 @@ export default function AffiliateDisclosurePage() {
             <span>¿Cómo se financia este cuaderno editorial?</span>
           </div>
           <p className="text-sm text-zinc-600 leading-relaxed">
-            Para adquirir los modelos que analizamos en la mesa de montaje sin recurrir a publicidad invasiva ni muros de pago, participamos en diversos programas de afiliación autorizados (incluyendo el programa de afiliados de <strong>Amazon Associates</strong> y redes asociadas de distribución de juguetes de construcción).
+            Para adquirir los modelos que analizamos en la mesa de montaje sin recurrir a publicidad invasiva ni muros de pago, participamos en diversos programas de afiliación autorizados (incluyendo el programa de afiliados de <strong>AliExpress Portals</strong> y redes asociadas de distribución de juguetes de construcción).
           </p>
           <p className="text-sm text-zinc-600 leading-relaxed">
             Al final de nuestros análisis facilitamos botones de consulta hacia distribuidores verificados. Si decides adquirir un set a través de uno de estos enlaces enmascarados (bajo la ruta interna <code>/ir/...</code>), el distribuidor puede abonarnos un pequeño porcentaje por la referencia comercial.
@@ -59,10 +59,10 @@ export default function AffiliateDisclosurePage() {
         <section className="space-y-3">
           <div className="flex items-center gap-2 text-lg font-bold font-serif text-zinc-900">
             <Award className="w-5 h-5 text-amber-700" />
-            <span>3. Declaración de Amazon Associates</span>
+            <span>3. Declaración de AliExpress Portals / Affiliate Program</span>
           </div>
           <p className="text-xs text-zinc-500 italic">
-            "Como participantes en el Programa de Afiliados de Amazon de la UE, obtenemos ingresos por las compras adscritas que cumplen los requisitos aplicables."
+            "Como participantes en el Programa de Afiliados de AliExpress (AliExpress Portals), obtenemos ingresos por las compras adscritas que cumplen los requisitos aplicables."
           </p>
         </section>
       </div>

@@ -39,7 +39,7 @@ export function AffiliateBox({ set, links = [] }: AffiliateBoxProps) {
         {activeLinks.map((link) => {
           const retailerSlug = link.retailerName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
           const jumpUrl = `/ir/${retailerSlug}/${link.internalSlug}`;
-          const isAmazon = link.retailerName.toLowerCase().includes("amazon");
+          const isPlaza = link.retailerName.toLowerCase().includes("plaza");
 
           return (
             <a
@@ -48,18 +48,23 @@ export function AffiliateBox({ set, links = [] }: AffiliateBoxProps) {
               target="_blank"
               rel="nofollow sponsored"
               className={
-                isAmazon
-                  ? "radar-btn-store justify-between py-3.5 px-4 shadow-sm hover:scale-[1.01] transition-transform group"
-                  : "radar-btn-primary justify-between py-3.5 px-4 shadow-sm hover:scale-[1.01] transition-transform group"
+                isPlaza
+                  ? "radar-btn-primary justify-between py-3.5 px-4 shadow-sm hover:scale-[1.01] transition-transform group !bg-[#ff4747] hover:!bg-[#e03a3a]"
+                  : "radar-btn-primary justify-between py-3.5 px-4 shadow-sm hover:scale-[1.01] transition-transform group !bg-[#ff5000] hover:!bg-[#e04500]"
               }
             >
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-white animate-ping" />
                 <span className="font-display font-semibold">
                   {set.isRetired
-                    ? `Buscar en ${link.retailerName}`
+                    ? `Buscar set / piezas en ${link.retailerName}`
                     : `Ver oferta en ${link.retailerName}`}
                 </span>
+                {isPlaza && (
+                  <span className="text-[10px] uppercase bg-white/20 px-1.5 py-0.5 rounded font-mono font-bold tracking-wider text-white">
+                    Plaza ES
+                  </span>
+                )}
               </span>
               <ExternalLink className="w-4 h-4 text-white/80 group-hover:text-white transition-colors" />
             </a>
