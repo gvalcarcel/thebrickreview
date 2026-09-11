@@ -1,7 +1,7 @@
 # TheBrickReview Platform Launch ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Umbrella Plan
 
 Date: 11-09-2026
-Status: IN_PROGRESS
+Status: COMPLETED
 Feature: brick-review-core
 Specification Reference: Especificaciones.md
 
@@ -49,19 +49,19 @@ Hard safety constraints:
 
 | Phase | Plan File | Status | Description |
 |---|---|---|---|
-| Phase 1 | `phase-01-project-setup-and-db_PLAN_11-09-26.md` | ACTIVE | Setup de Next.js 15, TypeScript, Tailwind, Drizzle ORM y esquema relacional |
-| Phase 2 | `phase-02-editorial-layout-and-viewer_PLAN_11-09-26.md` | PENDING | Layout editorial estilo revista, visor de Markdown y tipografÃƒÆ’Ã‚Â­a |
-| Phase 3 | `phase-03-set-specs-and-affiliate-engine_PLAN_11-09-26.md` | PENDING | Ficha SetSpecsCard, AffiliateBox y endpoint /ir/... con analÃƒÆ’Ã‚Â­tica |
-| Phase 4 | `phase-04-seo-and-legal-pages_PLAN_11-09-26.md` | PENDING | Schema.org, OpenGraph, Aviso Legal y directiva Fair Play |
-| Phase 5 | `phase-05-seeds-and-verification_PLAN_11-09-26.md` | PENDING | Seeds de sets emblemÃƒÆ’Ã‚Â¡ticos, suite de tests y validaciÃƒÆ’Ã‚Â³n final |
+| Phase 1 | `phase-01-project-setup-and-db_PLAN_11-09-26.md` | COMPLETED | Setup de Next.js 15, TypeScript, Tailwind, Drizzle ORM y esquema relacional |
+| Phase 2 | `phase-02-editorial-layout-and-viewer_PLAN_11-09-26.md` | COMPLETED | Layout editorial estilo revista, visor de Markdown y tipografía |
+| Phase 3 | `phase-03-set-specs-and-affiliate-engine_PLAN_11-09-26.md` | COMPLETED | Ficha SetSpecsCard, AffiliateBox y endpoint /ir/... con analítica |
+| Phase 4 | `phase-04-seo-and-legal-pages_PLAN_11-09-26.md` | COMPLETED | Schema.org, OpenGraph, Aviso Legal y directiva Fair Play |
+| Phase 5 | `phase-05-seeds-and-verification_PLAN_11-09-26.md` | COMPLETED | Seeds de sets emblemáticos, suite de tests y validación final |
 
 ---
 
 ## Progress Log
 
 - 11-09-2026: Kickoff del programa aprobado. Creado Umbrella Plan y estructura inicial. Arrancando Fase 1.
-
-- 11-09-2026: Fase 1 (Setup & Base de Datos) completada con ÃƒÆ’Ã‚Â©xito. Verificada compilaciÃƒÆ’Ã‚Â³n de producciÃƒÆ’Ã‚Â³n y suite de tests.
-- 11-09-2026: Fase 2 (MaquetaciÃƒÂ³n Editorial y Visor Markdown) completada. SSG validado para 10 pÃƒÂ¡ginas y 5 tests pasando.
-- 11-09-2026: Fase 3 (Ficha SetSpecsCard, AffiliateBox y RedirecciÃ³n /ir/...) completada con Ã©xito. Verificados 8 tests (TEST-001, TEST-002).
+- 11-09-2026: Fase 1 (Setup & Base de Datos) completada con éxito. Verificada compilación de producción y suite de tests.
+- 11-09-2026: Fase 2 (Maquetación Editorial y Visor Markdown) completada. SSG validado para 10 páginas y 5 tests pasando.
+- 11-09-2026: Fase 3 (Ficha SetSpecsCard, AffiliateBox y Redirección /ir/...) completada con éxito. Verificados 8 tests (TEST-001, TEST-002).
 - 11-09-2026: Fase 4 (SEO Técnico, Schema.org y Páginas Legales) completada con éxito. Verificadas 15 páginas y sitemap/robots.
+- 11-09-2026: Fase 5 (Catálogo de Seeds, Buscador Facetado y Pulido MVP) completada con éxito. 18 páginas SSG, 16 tests unitarios pasando y base de datos SQLite poblada. PROGRAMA COMPLETO.

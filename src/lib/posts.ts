@@ -69,6 +69,108 @@ export const SAMPLE_SETS: Record<string, LegoSet & { affiliateLinks: AffiliateLi
       },
     ],
   },
+  "10300": {
+    id: "set-10300",
+    setNumber: "10300",
+    name: "Máquina del Tiempo de Regreso al Futuro",
+    lineTheme: "Icons",
+    pieceCount: 1872,
+    minifigsCount: 2,
+    officialPriceCents: 19999,
+    releaseYear: 2022,
+    isRetired: false,
+    difficulty: "Avanzado",
+    imageUrl: "https://images.brickset.com/sets/images/10300-1.jpg",
+    createdAt: new Date("2022-04-01"),
+    affiliateLinks: [
+      {
+        id: "link-10300-amazon",
+        setId: "set-10300",
+        retailerName: "Amazon",
+        destinationUrl: "https://www.amazon.es/dp/B09QFS16F4?tag=thebrickreview-21",
+        internalSlug: "amazon-delorean-10300",
+        isActive: true,
+        createdAt: new Date(),
+      },
+      {
+        id: "link-10300-lego",
+        setId: "set-10300",
+        retailerName: "Tienda Oficial LEGO",
+        destinationUrl: "https://www.lego.com/es-es/product/back-to-the-future-time-machine-10300",
+        internalSlug: "lego-delorean-10300",
+        isActive: true,
+        createdAt: new Date(),
+      },
+    ],
+  },
+  "42143": {
+    id: "set-42143",
+    setNumber: "42143",
+    name: "Ferrari Daytona SP3",
+    lineTheme: "Technic",
+    pieceCount: 3778,
+    minifigsCount: 0,
+    officialPriceCents: 44999,
+    releaseYear: 2022,
+    isRetired: false,
+    difficulty: "Experto / AFOL",
+    imageUrl: "https://images.brickset.com/sets/images/42143-1.jpg",
+    createdAt: new Date("2022-06-01"),
+    affiliateLinks: [
+      {
+        id: "link-42143-amazon",
+        setId: "set-42143",
+        retailerName: "Amazon",
+        destinationUrl: "https://www.amazon.es/dp/B09QFVL8P6?tag=thebrickreview-21",
+        internalSlug: "amazon-ferrari-daytona-42143",
+        isActive: true,
+        createdAt: new Date(),
+      },
+      {
+        id: "link-42143-lego",
+        setId: "set-42143",
+        retailerName: "Tienda Oficial LEGO",
+        destinationUrl: "https://www.lego.com/es-es/product/ferrari-daytona-sp3-42143",
+        internalSlug: "lego-ferrari-daytona-42143",
+        isActive: true,
+        createdAt: new Date(),
+      },
+    ],
+  },
+  "21325": {
+    id: "set-21325",
+    setNumber: "21325",
+    name: "Herrero Medieval (Medieval Blacksmith)",
+    lineTheme: "Ideas",
+    pieceCount: 2164,
+    minifigsCount: 4,
+    officialPriceCents: 17999,
+    releaseYear: 2021,
+    isRetired: true,
+    difficulty: "Avanzado",
+    imageUrl: "https://images.brickset.com/sets/images/21325-1.jpg",
+    createdAt: new Date("2021-02-01"),
+    affiliateLinks: [
+      {
+        id: "link-21325-amazon",
+        setId: "set-21325",
+        retailerName: "Amazon",
+        destinationUrl: "https://www.amazon.es/dp/B08G4K97Y1?tag=thebrickreview-21",
+        internalSlug: "amazon-medieval-blacksmith-21325",
+        isActive: true,
+        createdAt: new Date(),
+      },
+      {
+        id: "link-21325-lego",
+        setId: "set-21325",
+        retailerName: "Tienda Oficial LEGO",
+        destinationUrl: "https://www.lego.com/es-es/product/medieval-blacksmith-21325",
+        internalSlug: "lego-medieval-blacksmith-21325",
+        isActive: true,
+        createdAt: new Date(),
+      },
+    ],
+  },
 };
 
 export const SAMPLE_POSTS: Record<string, PostWithSet> = {
@@ -99,7 +201,6 @@ El resultado, plasmado en las 1.254 piezas del set 10497, no es un simple ejerci
 Desde la apertura de las primeras bolsas de papel numeradas se percibe una declaración de intenciones: **cero pegatinas**. Cada panel de control, cada logotipo de la flecha roja orbitando sobre el planeta dorado y cada número identificativo son piezas impresas de fábrica. Para un aficionado adulto, este detalle eleva instantáneamente la calidad percibida del modelo a un estándar prémium.
 
 El ritmo de la construcción se divide claramente en cuatro etapas:
-
 1. **El núcleo del bastidor central**: Emplea una combinación de vigas Technic y placas inversas para soportar la torsión de las alas.
 2. **El tren de aterrizaje retráctil**: Una maravilla mecánica operada mediante fricción suave que se oculta limpiamente en la panza de la nave.
 3. **La carlinga y esclusas intermedias**: Integración de cristales amarillos transparentes en ángulo compuesto con asientos para cuatro astronautas.
@@ -155,12 +256,107 @@ La seña de identidad del Halcón Milenario es el *greebling*: la colocación de
 
 El trabajo en las mandíbulas delanteras y el anillo de ventilación de los motores traseros es un espectáculo de variedad de piezas. Sin embargo, este grado de detalle conlleva una advertencia crítica para el coleccionista:
 - **Fragilidad en el manejo**: Prácticamente todos los paneles superiores descansan por gravedad o encajan mediante pasadores mínimos. Intentar mover la nave sin sujetarla por el chasis central Technic provocará el desprendimiento inmediato de cubiertas.
+`,
+  },
+
+  "delorean-regreso-al-futuro-10300": {
+    id: "post-10300",
+    title: "Máquina del Tiempo Delorean (10300): Tres películas en un chasis sublime",
+    slug: "delorean-regreso-al-futuro-10300",
+    excerpt: "Análisis a fondo del set Icons 10300: cómo funciona el mecanismo de plegado de ruedas, la recreación del condensador de fluzo y la modularidad de sus tres versiones icónicas.",
+    status: "published",
+    readingTimeMinutes: 8,
+    setId: "set-10300",
+    publishedAt: new Date("2026-09-05"),
+    createdAt: new Date("2026-09-04"),
+    updatedAt: new Date("2026-09-05"),
+    legoSet: SAMPLE_SETS["10300"],
+    affiliateLinks: SAMPLE_SETS["10300"].affiliateLinks,
+    contentMarkdown: `
+## Introducción: La redención de una leyenda cinematográfica
+
+Tras el modesto experimento de la línea Cuusoo en 2013, los seguidores de la trilogía de Robert Zemeckis demandaban una versión a gran escala que hiciera justicia a las líneas angulosas de Giorgetto Giugiaro. Con la referencia 10300, el equipo de diseño no solo cumplió las expectativas estéticas, sino que concibió un chasis transformable que permite recrear el vehículo de cualquiera de las tres entregas.
 
 ---
 
-## 3. Valor de conservación y longevidad
+## 1. Mecánica del tren de rodaje plegable
 
-A un ratio aproximado de 11 céntimos por pieza para una licencia de alto calibre, el set entrega decenas de horas de desafío intelectual. Es el culmen de lo que la experiencia de construcción adulta puede ofrecer hoy en día.
+El gran hito de ingeniería de este modelo reside en la palanca oculta en los bajos del coche. Con un único movimiento fluido, las cuatro ruedas basculan 90 grados hacia la posición de vuelo aerotransportado vista en *Regreso al Futuro II*. La articulación utiliza resortes elásticos y brazos Technic con una tolerancia exacta que resiste cientos de activaciones sin fatigarse.
+
+---
+
+## 2. El habitáculo y el condensador de fluzo
+
+El interior es una delicia de fidelidad: el mítico condensador de fluzo cuenta con un ladrillo luminoso integrado que se activa pulsando el reactor trasero. La consola central incluye los indicadores de destino temporal (1955, 1985, 2015) y las puertas de ala de gaviota se mantienen abiertas por equilibrio propio sin necesidad de trabas externas.
+`,
+  },
+
+  "ferrari-daytona-sp3-42143": {
+    id: "post-42143",
+    title: "Ferrari Daytona SP3 (42143): Complejidad secuencial a escala 1:8",
+    slug: "ferrari-daytona-sp3-42143",
+    excerpt: "Diseccionamos la caja de cambios secuencial de 8 velocidades con levas de cambio, la suspensión independiente y el desafío milimétrico de la carrocería en rosso corsa.",
+    status: "published",
+    readingTimeMinutes: 12,
+    setId: "set-42143",
+    publishedAt: new Date("2026-09-02"),
+    createdAt: new Date("2026-09-01"),
+    updatedAt: new Date("2026-09-02"),
+    legoSet: SAMPLE_SETS["42143"],
+    affiliateLinks: SAMPLE_SETS["42143"].affiliateLinks,
+    contentMarkdown: `
+## Introducción: El estandarte de la serie Ultimate Car Concept
+
+La cuarta entrega de la prestigiosa línea 1:8 de Technic eleva el listón de la precisión automovilística. Inspirado en los prototipos deportivos que coparon el podio de las 24 Horas de Daytona en 1967, este modelo traslada la sensualidad curvilínea de Maranello a un sistema eminentemente geométrico como son las vigas y paneles de plástico.
+
+---
+
+## 1. La catedral mecánica: Caja secuencial de 8 marchas
+
+Montar el Ferrari Daytona SP3 es, esencialmente, construir un motor de relojería. La caja de cambios secuencial operada por levas funcionales en el volante es una obra maestra de sincronización:
+- Utiliza anillos de cambio de precisión y un tambor selector que engrana de forma audible cada relación.
+- El motor V12 cuenta con pistones móviles conectados a un diferencial funcional que rueda con suavidad milimétrica.
+
+---
+
+## 2. La armonía de las líneas traseras
+
+La zaga presidida por lamas horizontales rojas y las puertas de apertura en mariposa requieren una atención absoluta al manual de instrucciones: un pasador colocado con medio grado de desviación impedirá el cierre enrasado de la carrocería.
+`,
+  },
+
+  "medieval-blacksmith-21325": {
+    id: "post-21325",
+    title: "Herrero Medieval (21325): El renacimiento del castillo en clave modular",
+    slug: "medieval-blacksmith-21325",
+    excerpt: "Un recorrido planta por planta por el mejor set medieval de la década: forja con ladrillo de luz, cubierta de tejas policromadas y técnicas de entramado de madera.",
+    status: "published",
+    readingTimeMinutes: 9,
+    setId: "set-21325",
+    publishedAt: new Date("2026-08-28"),
+    createdAt: new Date("2026-08-27"),
+    updatedAt: new Date("2026-08-28"),
+    legoSet: SAMPLE_SETS["21325"],
+    affiliateLinks: SAMPLE_SETS["21325"].affiliateLinks,
+    contentMarkdown: `
+## Introducción: El sueño del aficionado a la época clásica
+
+Surgido de la plataforma comunitaria Ideas a partir del diseño de Clemens Fiedler, el Herrero Medieval (21325) revitalizó el género de las construcciones históricas combinando la escala de las casas modulares urbanas con el encanto rústico del medievo.
+
+---
+
+## 1. Tres plantas de artesanía arquitectónica
+
+La estructura se desacopla con facilidad en tres módulos independientes:
+1. **La planta baja de piedra**: Dedicada al taller del herrero, con fuelle funcional que activa un ladrillo con luz en las brasas del carbón.
+2. **La primera planta de madera**: La vivienda con cocina detallada, mantequera y suelo en tono nogal.
+3. **El ático abuhardillado**: El dormitorio con alfombra de oso, escritorio de pluma y almacenamiento de grano.
+
+---
+
+## 2. La técnica de las tejas curvas policromadas
+
+El tejado a dos aguas es, sin duda, la pieza visual central: combina tejas negras, azules y turquesas dispuestas en capas escalonadas para simular el musgo y el desgaste del tiempo.
 `,
   },
 };

@@ -49,10 +49,11 @@ Conclusion del revisor.
     expect(post?.readingTimeMinutes).toBeGreaterThanOrEqual(5);
 
     const iconsPosts = await getPostsByCategory("icons");
-    expect(iconsPosts).toHaveLength(1);
-    expect(iconsPosts[0].slug).toBe("galaxy-explorer-10497");
+    expect(iconsPosts).toHaveLength(2);
+    expect(iconsPosts.map((p) => p.slug)).toContain("galaxy-explorer-10497");
+    expect(iconsPosts.map((p) => p.slug)).toContain("delorean-regreso-al-futuro-10300");
 
     const all = await getAllPosts();
-    expect(all.length).toBeGreaterThanOrEqual(2);
+    expect(all.length).toBe(5);
   });
 });
