@@ -11,24 +11,23 @@ export function SetSpecsCard({ set }: SetSpecsCardProps) {
   const pricePerPiece = calculatePricePerPiece(set.officialPriceCents, set.pieceCount);
 
   return (
-    <div className="border border-zinc-200 bg-white rounded-xl p-6 sm:p-8 my-10 shadow-sm space-y-6">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-zinc-100">
+    <div className="radar-card p-6 sm:p-8 my-10 space-y-6 bg-white">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-light">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-widest text-amber-700">
+          <span className="radar-badge radar-badge--subtle mb-1.5">
             Ficha Técnica Oficial
           </span>
-          <h3 className="text-xl sm:text-2xl font-bold font-serif text-zinc-950">
+          <h3 className="text-xl sm:text-2xl font-bold font-display text-main">
             {set.name} — #{set.setNumber}
           </h3>
         </div>
 
         {set.isRetired ? (
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200 text-xs font-medium">
-            <AlertTriangle className="w-3.5 h-3.5 text-amber-700 shrink-0" />
-            <span>Set Descatalogado (Coleccionismo)</span>
-          </div>
+          <span className="radar-badge radar-badge--eol">
+            <AlertTriangle className="w-3 h-3 inline" /> Retirado / Descatalogado
+          </span>
         ) : (
-          <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-medium">
+          <span className="radar-badge radar-badge--history-low">
             En catálogo oficial activo
           </span>
         )}
@@ -36,60 +35,62 @@ export function SetSpecsCard({ set }: SetSpecsCardProps) {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 text-sm">
         <div className="space-y-1">
-          <div className="flex items-center gap-1.5 text-zinc-500 text-xs">
-            <Layers className="w-4 h-4 text-zinc-400" />
+          <div className="flex items-center gap-1.5 text-muted text-xs font-display">
+            <Layers className="w-4 h-4 text-primary" />
             <span>Número de Piezas</span>
           </div>
-          <p className="font-bold text-zinc-900 text-base">{set.pieceCount.toLocaleString("es-ES")}</p>
+          <p className="font-bold text-main text-base font-mono">{set.pieceCount.toLocaleString("es-ES")} pcs</p>
         </div>
 
         <div className="space-y-1">
-          <div className="flex items-center gap-1.5 text-zinc-500 text-xs">
-            <Users className="w-4 h-4 text-zinc-400" />
+          <div className="flex items-center gap-1.5 text-muted text-xs font-display">
+            <Users className="w-4 h-4 text-primary" />
             <span>Minifiguras</span>
           </div>
-          <p className="font-bold text-zinc-900 text-base">
+          <p className="font-bold text-main text-base font-mono">
             {set.minifigsCount && set.minifigsCount > 0 ? `${set.minifigsCount} figuras` : "Sin minifiguras"}
           </p>
         </div>
 
         <div className="space-y-1">
-          <div className="flex items-center gap-1.5 text-zinc-500 text-xs">
-            <Calendar className="w-4 h-4 text-zinc-400" />
+          <div className="flex items-center gap-1.5 text-muted text-xs font-display">
+            <Calendar className="w-4 h-4 text-primary" />
             <span>Año de lanzamiento</span>
           </div>
-          <p className="font-bold text-zinc-900 text-base">{set.releaseYear}</p>
+          <p className="font-bold text-main text-base font-mono">{set.releaseYear}</p>
         </div>
 
         <div className="space-y-1">
-          <div className="flex items-center gap-1.5 text-zinc-500 text-xs">
-            <Award className="w-4 h-4 text-zinc-400" />
+          <div className="flex items-center gap-1.5 text-muted text-xs font-display">
+            <Award className="w-4 h-4 text-primary" />
             <span>Nivel de dificultad</span>
           </div>
-          <p className="font-bold text-zinc-900 text-base">{set.difficulty}</p>
+          <p className="font-bold text-main text-base">{set.difficulty}</p>
         </div>
 
         <div className="space-y-1">
-          <div className="flex items-center gap-1.5 text-zinc-500 text-xs">
-            <Banknote className="w-4 h-4 text-zinc-400" />
-            <span>PVP Oficial de referencia</span>
+          <div className="flex items-center gap-1.5 text-muted text-xs font-display">
+            <Banknote className="w-4 h-4 text-primary" />
+            <span>PVP Oficial</span>
           </div>
-          <p className="font-bold text-zinc-900 text-base">{priceFormatted}</p>
+          <p className="font-bold text-main text-base font-mono">{priceFormatted}</p>
         </div>
 
         {pricePerPiece && (
           <div className="space-y-1">
-            <div className="flex items-center gap-1.5 text-zinc-500 text-xs">
-              <span className="text-zinc-400 font-mono">€/p</span>
+            <div className="flex items-center gap-1.5 text-muted text-xs font-display">
+              <span className="font-mono text-primary font-bold">€/p</span>
               <span>Ratio precio / pieza</span>
             </div>
-            <p className="font-bold text-amber-800 text-base">{pricePerPiece}</p>
+            <p className="font-bold text-primary text-base font-mono">
+              <span className="radar-metric-pill">{pricePerPiece}</span>
+            </p>
           </div>
         )}
       </div>
 
       {set.isRetired && (
-        <p className="text-xs text-zinc-500 bg-zinc-50 p-3 rounded-lg border border-zinc-200/70 leading-relaxed">
+        <p className="text-xs text-secondary bg-surface-subtle p-3.5 rounded-md border border-light leading-relaxed">
           <strong>Nota para coleccionistas:</strong> Al encontrarse oficialmente retirado del catálogo regular de LEGO®, los precios de mercado en distribuidores externos y plataformas de segunda mano pueden experimentar fluctuaciones respecto al PVP original.
         </p>
       )}

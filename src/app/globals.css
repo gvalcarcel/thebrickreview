@@ -1,18 +1,309 @@
-﻿@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   BrickRadar — Design System & Master Stylesheet
+   Design System: BrickRadar Tactile Precision
+   Target: LEGO Affiliate Aggregator, Price Comparator & Deal Tracker
+   ========================================================================== */
+
 :root {
-  --background: #FAFAFA;
-  --foreground: #18181B;
+  /* --- Brand & Primary Colors --- */
+  --color-primary: #e52521;            /* LEGO red signature accent / Primary CTA */
+  --color-primary-hover: #c91b17;
+  --color-primary-active: #a81410;
+  --color-primary-subtle: #fef2f2;
+  --color-primary-border: #fecaca;
+
+  /* --- Secondary & Accent Accents --- */
+  --color-accent-yellow: #f59e0b;     /* Classic stud yellow / Badges & highlights */
+  --color-accent-yellow-light: #fef3c7;
+  --color-accent-blue: #2563eb;       /* Data, links, technical badges */
+  --color-accent-blue-subtle: #eff6ff;
+
+  /* --- Semantic & Conversion States --- */
+  --color-success: #10b981;           /* Historic low / In stock / Best price */
+  --color-success-dark: #059669;
+  --color-success-bg: #ecfdf5;
+  --color-success-border: #a7f3d0;
+
+  --color-warning: #f97316;           /* Retiring soon / Low stock alert */
+  --color-warning-bg: #fff7ed;
+  --color-warning-border: #ffedd5;
+
+  --color-danger: #ef4444;            /* Critical price drops / EOL urgency */
+  --color-danger-bg: #fef2f2;
+
+  /* --- Neutral & Surface Palette --- */
+  --surface-canvas: #faf8ff;          /* Soft background with subtle cool tint */
+  --surface-card: #ffffff;            /* Pure white container cards */
+  --surface-card-subtle: #f8fafc;
+  --surface-card-muted: #f1f5f9;
+  --surface-dark: #0f172a;            /* High-contrast header & terminal banners */
+  --surface-dark-card: #1e293b;
+
+  /* --- Text & Content Hierarchy --- */
+  --text-main: #0f172a;               /* Slate-900 / High readability body */
+  --text-secondary: #475569;          /* Slate-600 / Subtitles & metadata */
+  --text-muted: #94a3b8;              /* Slate-400 / Labels, counters, borders */
+  --text-inverse: #ffffff;
+  --text-on-primary: #ffffff;
+
+  /* --- Borders & Dividers --- */
+  --border-light: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --border-strong: #cbd5e1;
+  --border-focus: #e52521;
+
+  /* --- Typography --- */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* --- Border Radius & Geometry --- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 9999px;
+
+  /* --- Shadows (Tactile & Clean) --- */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 2px 4px -1px rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 24px -4px rgba(15, 23, 42, 0.10), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
+  --shadow-glow-red: 0 0 16px rgba(229, 37, 33, 0.25);
+  --shadow-glow-green: 0 0 16px rgba(16, 185, 129, 0.25);
+
+  /* --- Transitions --- */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Legacy aliases for compatibility */
+  --background: var(--surface-canvas);
+  --foreground: var(--text-main);
 }
 
+/* ==========================================================================
+   Global Resets & Base Styles
+   ========================================================================== */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  text-rendering: optimizeLegibility;
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background-color: var(--surface-canvas);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   Utility & Core Components
+   ========================================================================== */
+
+/* Top Alert Bar / Ticker */
+.radar-topbar {
+  background: var(--surface-dark);
+  color: var(--text-inverse);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+.radar-topbar a {
+  color: #fbbf24;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Search Bar Component */
+.radar-search-container {
+  position: relative;
+  width: 100%;
+}
+.radar-search-input {
+  width: 100%;
+  padding: 0.625rem 1rem 0.625rem 2.5rem;
+  background: var(--surface-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.radar-search-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(229, 37, 33, 0.12);
+}
+
+/* Badges & Metric Pills */
+.radar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.radar-badge--drop {
+  background: var(--color-danger);
+  color: var(--text-inverse);
+}
+
+.radar-badge--history-low {
+  background: var(--color-success);
+  color: var(--text-inverse);
+}
+
+.radar-badge--eol {
+  background: var(--color-warning-bg);
+  color: #c2410c;
+  border: 1px solid var(--color-warning-border);
+}
+
+.radar-badge--subtle {
+  background: var(--surface-card-muted);
+  color: var(--text-secondary);
+}
+
+/* Product Cards & Affiliate Deal Container */
+.radar-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+.radar-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+/* Featured Deal / Super Chollo Container */
+.radar-hero-deal {
+  background: var(--surface-card);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-red);
+  position: relative;
+  overflow: hidden;
+}
+
+.radar-hero-header {
+  background: var(--color-primary);
+  color: var(--text-inverse);
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Real-Time Price Comparison Table */
+.radar-store-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+.radar-store-row {
+  background: var(--surface-card-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+.radar-store-row:hover {
+  background: #f1f5f9;
+}
+.radar-store-row.is-winner {
+  background: var(--color-success-bg);
+  border: 1px solid var(--color-success-border);
+}
+
+/* Affiliate Conversion Buttons */
+.radar-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.6875rem 1.375rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+.radar-btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+.radar-btn-primary:active {
+  background-color: var(--color-primary-active);
+  transform: translateY(0);
+}
+
+.radar-btn-store {
+  background-color: #007600;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  text-decoration: none;
+}
+.radar-btn-store:hover {
+  background-color: #005a00;
+}
+
+/* Metric Display (€/Piece, Pieces, Minifigs) */
+.radar-metric-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent-blue);
+  background: var(--color-accent-blue-subtle);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-xs);
+}
+
+/* Historical Sparkline Area */
+.radar-sparkline {
+  stroke: var(--color-success-dark);
+  stroke-width: 2;
+  fill: rgba(16, 185, 129, 0.1);
 }
 
 /* Tipografía de lectura para artículos editoriales */
@@ -30,26 +321,28 @@ body {
 }
 
 .prose-editorial h2 {
+  font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  color: #18181B;
+  color: var(--text-main);
 }
 
 .prose-editorial h3 {
+  font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
-  color: #18181B;
+  color: var(--text-main);
 }
 
 .prose-editorial blockquote {
-  border-left: 3px solid #D97706;
+  border-left: 3px solid var(--color-primary);
   padding-left: 1.25rem;
   font-style: italic;
-  color: #52525B;
+  color: var(--text-secondary);
   margin: 1.75rem 0;
 }

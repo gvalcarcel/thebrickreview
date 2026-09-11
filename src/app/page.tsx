@@ -7,25 +7,31 @@ export default async function Home() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-12">
       {/* Sección Hero Editorial */}
-      <section className="border-b border-zinc-200 pb-10 space-y-4">
-        <span className="text-xs font-semibold uppercase tracking-widest text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded">
-          Crítica y Documentación de Sets LEGO®
-        </span>
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-zinc-950 font-serif leading-[1.15]">
-          El cuaderno de análisis para constructores y coleccionistas.
+      <section className="border-b border-light pb-10 space-y-4">
+        <div className="flex items-center gap-2">
+          <span className="radar-badge radar-badge--subtle border border-light">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            BrickRadar — Precision Tracker
+          </span>
+          <span className="radar-badge radar-badge--drop">
+            Análisis & Deals
+          </span>
+        </div>
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-main font-display leading-[1.12]">
+          El cuaderno de análisis técnico y comparador para coleccionistas LEGO®.
         </h1>
-        <p className="text-base sm:text-lg text-zinc-600 max-w-2xl leading-relaxed">
-          Reseñas técnicas sinceras, análisis del ratio precio/pieza, despiece y valoración del ensamblaje. Sin valoraciones comerciales agresivas.
+        <p className="text-base sm:text-lg text-secondary max-w-2xl leading-relaxed">
+          Reseñas técnicas sinceras, análisis del ratio precio/pieza, despiece y seguimiento de stock sin estridencias comerciales.
         </p>
       </section>
 
       {/* Buscador Interactivo y Catálogo de Reseñas */}
       <section className="space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 font-serif">
+          <h2 className="text-2xl font-bold tracking-tight text-main font-display">
             Cuadernos de Montaje Disponibles
           </h2>
-          <span className="text-xs text-zinc-400 font-medium">Catálogo completo ({posts.length} sets)</span>
+          <span className="text-xs text-muted font-medium font-mono">Catálogo ({posts.length} sets indexados)</span>
         </div>
 
         <SearchFilter initialPosts={posts} />

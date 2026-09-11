@@ -52,32 +52,32 @@ export function SearchFilter({ initialPosts }: SearchFilterProps) {
   return (
     <div className="space-y-8">
       {/* Barra de Búsqueda y Filtros Facetados */}
-      <div className="border border-zinc-200 bg-white p-5 sm:p-6 rounded-xl shadow-sm space-y-5">
-        <div className="relative">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
+      <div className="radar-card p-5 sm:p-6 space-y-5 bg-white">
+        <div className="radar-search-container">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
           <input
             type="search"
             placeholder="Buscar por nombre, número de set (ej: 10497) o temática..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-600/20 focus:border-amber-600 transition-all placeholder:text-zinc-400 bg-zinc-50/50"
+            className="radar-search-input"
           />
         </div>
 
         {/* Selectores de Facetas */}
         <div className="flex flex-wrap items-center gap-4 text-xs">
-          <div className="flex items-center gap-1.5 font-semibold text-zinc-500">
-            <Filter className="w-3.5 h-3.5" />
+          <div className="flex items-center gap-1.5 font-semibold text-secondary font-display">
+            <Filter className="w-3.5 h-3.5 text-primary" />
             <span>Filtros:</span>
           </div>
 
           {/* Temática */}
           <div className="flex items-center gap-1">
-            <span className="text-zinc-400">Línea:</span>
+            <span className="text-muted">Línea:</span>
             <select
               value={selectedTheme}
               onChange={(e) => setSelectedTheme(e.target.value)}
-              className="border border-zinc-200 rounded px-2 py-1 bg-white font-medium text-zinc-800 focus:outline-none focus:ring-1 focus:ring-amber-600"
+              className="border border-light rounded-md px-2.5 py-1 bg-white font-medium text-main focus:outline-none focus:border-primary text-xs"
             >
               {themes.map((t) => (
                 <option key={t} value={t}>
@@ -89,11 +89,11 @@ export function SearchFilter({ initialPosts }: SearchFilterProps) {
 
           {/* Dificultad */}
           <div className="flex items-center gap-1">
-            <span className="text-zinc-400">Dificultad:</span>
+            <span className="text-muted">Dificultad:</span>
             <select
               value={selectedDifficulty}
               onChange={(e) => setSelectedDifficulty(e.target.value)}
-              className="border border-zinc-200 rounded px-2 py-1 bg-white font-medium text-zinc-800 focus:outline-none focus:ring-1 focus:ring-amber-600"
+              className="border border-light rounded-md px-2.5 py-1 bg-white font-medium text-main focus:outline-none focus:border-primary text-xs"
             >
               <option value="TODOS">Todas</option>
               <option value="Iniciación">Iniciación</option>
@@ -105,11 +105,11 @@ export function SearchFilter({ initialPosts }: SearchFilterProps) {
 
           {/* Estado de Catálogo */}
           <div className="flex items-center gap-1">
-            <span className="text-zinc-400">Catálogo:</span>
+            <span className="text-muted">Catálogo:</span>
             <select
               value={retiredFilter}
               onChange={(e) => setRetiredFilter(e.target.value as "TODOS" | "ACTIVO" | "RETIRED")}
-              className="border border-zinc-200 rounded px-2 py-1 bg-white font-medium text-zinc-800 focus:outline-none focus:ring-1 focus:ring-amber-600"
+              className="border border-light rounded-md px-2.5 py-1 bg-white font-medium text-main focus:outline-none focus:border-primary text-xs"
             >
               <option value="TODOS">Todos</option>
               <option value="ACTIVO">En catálogo</option>
@@ -118,19 +118,21 @@ export function SearchFilter({ initialPosts }: SearchFilterProps) {
           </div>
 
           {/* Contador de resultados */}
-          <div className="ml-auto text-xs text-zinc-400 font-medium">
-            {filteredPosts.length} {filteredPosts.length === 1 ? "análisis encontrado" : "análisis encontrados"}
+          <div className="ml-auto">
+            <span className="radar-metric-pill">
+              {filteredPosts.length} {filteredPosts.length === 1 ? "análisis" : "análisis"}
+            </span>
           </div>
         </div>
       </div>
 
       {/* Resultados de Artículos */}
       {filteredPosts.length === 0 ? (
-        <div className="border border-dashed border-zinc-200 rounded-xl p-12 text-center text-zinc-500 space-y-2 bg-white">
-          <p className="font-serif italic text-base text-zinc-700">
+        <div className="radar-card p-12 text-center text-secondary space-y-2 bg-white">
+          <p className="font-display font-medium text-base text-main">
             No se encontraron análisis que coincidan con los criterios seleccionados.
           </p>
-          <p className="text-xs text-zinc-400">
+          <p className="text-xs text-muted">
             Prueba a limpiar la búsqueda o cambiar los filtros de línea o dificultad.
           </p>
         </div>
@@ -139,52 +141,56 @@ export function SearchFilter({ initialPosts }: SearchFilterProps) {
           {filteredPosts.map((post) => (
             <article
               key={post.id}
-              className="border border-zinc-200 rounded-xl p-6 bg-white hover:border-zinc-300 transition-all hover:shadow-md flex flex-col justify-between space-y-6"
+              className="radar-card p-6 justify-between space-y-6"
             >
               <div className="space-y-3">
-                <div className="flex items-center justify-between text-xs text-zinc-500">
+                <div className="flex items-center justify-between text-xs text-muted">
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold text-amber-700 uppercase tracking-wider">
-                      {post.legoSet?.lineTheme} • Set #{post.legoSet?.setNumber}
+                    <span className="radar-badge radar-badge--subtle">
+                      {post.legoSet?.lineTheme} • #{post.legoSet?.setNumber}
                     </span>
-                    {post.legoSet?.isRetired && (
-                      <span className="inline-flex items-center gap-1 text-[10px] text-amber-800 bg-amber-50 border border-amber-200 px-1.5 py-0.2 rounded font-medium">
-                        <AlertTriangle className="w-2.5 h-2.5" /> Retirado
+                    {post.legoSet?.isRetired ? (
+                      <span className="radar-badge radar-badge--eol">
+                        <AlertTriangle className="w-2.5 h-2.5 inline" /> EOL / Retirado
+                      </span>
+                    ) : (
+                      <span className="radar-badge radar-badge--history-low">
+                        Activo
                       </span>
                     )}
                   </div>
-                  <time dateTime={post.publishedAt ? post.publishedAt.toISOString() : undefined}>
+                  <time dateTime={post.publishedAt ? post.publishedAt.toISOString() : undefined} className="font-mono text-[11px]">
                     {post.publishedAt
                       ? new Intl.DateTimeFormat("es-ES", { month: "short", year: "numeric" }).format(post.publishedAt)
                       : "2026"}
                   </time>
                 </div>
 
-                <h3 className="text-2xl font-bold font-serif text-zinc-900 leading-snug">
-                  <Link href={`/resenas/${post.slug}`} className="hover:text-amber-800 transition-colors">
+                <h3 className="text-2xl font-bold font-display text-main leading-snug">
+                  <Link href={`/resenas/${post.slug}`} className="hover:text-primary transition-colors">
                     {post.title}
                   </Link>
                 </h3>
 
-                <p className="text-sm text-zinc-600 leading-relaxed line-clamp-3">
+                <p className="text-sm text-secondary leading-relaxed line-clamp-3">
                   {post.excerpt}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-500">
-                <div className="flex items-center space-x-4">
-                  <span className="flex items-center gap-1">
-                    <Layers className="w-3.5 h-3.5" /> {post.legoSet?.pieceCount.toLocaleString("es-ES")} piezas
+              <div className="pt-4 border-t border-light flex items-center justify-between text-xs text-secondary">
+                <div className="flex items-center space-x-3">
+                  <span className="radar-metric-pill flex items-center gap-1">
+                    <Layers className="w-3 h-3 inline" /> {post.legoSet?.pieceCount.toLocaleString("es-ES")} pcs
                   </span>
-                  <span className="flex items-center gap-1">
+                  <span className="text-muted flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" /> {post.readingTimeMinutes} min
                   </span>
                 </div>
                 <Link
                   href={`/resenas/${post.slug}`}
-                  className="font-semibold text-zinc-900 inline-flex items-center gap-1 hover:text-amber-700"
+                  className="font-bold text-main inline-flex items-center gap-1 hover:text-primary transition-colors font-display"
                 >
-                  Leer análisis <ArrowRight className="w-3.5 h-3.5" />
+                  Leer análisis <ArrowRight className="w-3.5 h-3.5 text-primary" />
                 </Link>
               </div>
             </article>

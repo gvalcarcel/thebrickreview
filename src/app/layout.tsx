@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 
@@ -14,29 +14,37 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className="min-h-screen flex flex-col bg-[#FAFAFA] text-[#18181B] selection:bg-amber-100 selection:text-amber-900">
+      <body className="min-h-screen flex flex-col bg-[var(--surface-canvas)] text-[var(--text-main)] selection:bg-red-100 selection:text-red-900 font-sans">
+        {/* Top Alert Bar / Ticker */}
+        <div className="radar-topbar">
+          <span>BrickRadar & The Brick Review: Cuaderno de análisis, despiece técnico y mínimos históricos de sets LEGO®.</span>
+          <Link href="/legal/afiliacion">Transparencia &rarr;</Link>
+        </div>
+
         {/* Cabecera Editorial */}
-        <header className="border-b border-zinc-200 bg-white/90 backdrop-blur sticky top-0 z-40">
+        <header className="border-b border-light bg-white/90 backdrop-blur sticky top-0 z-40">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2 group">
-              <span className="w-4 h-4 rounded-sm bg-amber-600 group-hover:bg-amber-700 transition-colors inline-block" />
-              <span className="font-bold tracking-tight text-xl text-zinc-900">The Brick Review</span>
-              <span className="hidden sm:inline-block text-xs uppercase tracking-widest text-zinc-400 font-semibold pl-2 border-l border-zinc-200">
-                Cuaderno Editorial
+            <Link href="/" className="flex items-center space-x-2.5 group">
+              <span className="w-5 h-5 rounded-sm bg-primary flex items-center justify-center text-white text-[10px] font-extrabold shadow-sm transition-transform group-hover:scale-105">
+                BR
+              </span>
+              <span className="font-bold tracking-tight text-xl text-main font-display">The Brick Review</span>
+              <span className="hidden sm:inline-block text-xs uppercase tracking-widest text-muted font-semibold pl-2 border-l border-light font-display">
+                Tactile Precision
               </span>
             </Link>
 
-            <nav className="flex items-center space-x-6 text-sm font-medium text-zinc-600">
-              <Link href="/categorias/icons" className="hover:text-zinc-950 transition-colors">
+            <nav className="flex items-center space-x-6 text-sm font-medium text-secondary">
+              <Link href="/categorias/icons" className="hover:text-primary transition-colors">
                 Icons
               </Link>
-              <Link href="/categorias/star-wars" className="hover:text-zinc-950 transition-colors">
+              <Link href="/categorias/star-wars" className="hover:text-primary transition-colors">
                 Star Wars
               </Link>
-              <Link href="/categorias/technic" className="hover:text-zinc-950 transition-colors">
+              <Link href="/categorias/technic" className="hover:text-primary transition-colors">
                 Technic
               </Link>
-              <Link href="/categorias/ideas" className="hover:text-zinc-950 transition-colors">
+              <Link href="/categorias/ideas" className="hover:text-primary transition-colors">
                 Ideas
               </Link>
             </nav>
