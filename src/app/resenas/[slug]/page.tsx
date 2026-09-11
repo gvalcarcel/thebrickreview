@@ -7,6 +7,8 @@ import { ArticleContent } from "@/components/blog/article-content";
 import { TableOfContents } from "@/components/blog/table-of-contents";
 import { ProsConsCard } from "@/components/blog/pros-cons-card";
 import { BuildVerdictCard } from "@/components/blog/build-verdict-card";
+import { SetSpecsCard } from "@/components/affiliate/set-specs-card";
+import { AffiliateBox } from "@/components/affiliate/affiliate-box";
 
 interface ReviewPageProps {
   params: Promise<{ slug: string }>;
@@ -52,7 +54,6 @@ export default async function ReviewPage({ params }: ReviewPageProps) {
   const htmlContent = parseMarkdownToHtml(post.contentMarkdown);
   const toc = extractTableOfContents(post.contentMarkdown);
 
-  // Pros & cons según el set analizado
   const isExplorer = slug.includes("10497");
   const pros = isExplorer
     ? [
@@ -94,11 +95,17 @@ export default async function ReviewPage({ params }: ReviewPageProps) {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-8 items-start">
         <div className="min-w-0">
           <TableOfContents items={toc} />
-          
+
+          {/* Cuerpo analítico */}
           <ArticleContent htmlContent={htmlContent} />
 
+          {/* Ficha técnica del set */}
+          {post.legoSet && <SetSpecsCard set={post.legoSet} />}
+
+          {/* Balance técnico: Pros y contras */}
           <ProsConsCard pros={pros} cons={cons} />
 
+          {/* Veredicto de montaje */}
           <BuildVerdictCard
             finalScore={isExplorer ? 9.6 : 9.4}
             verdictSummary={
@@ -111,10 +118,15 @@ export default async function ReviewPage({ params }: ReviewPageProps) {
             assemblyFlow={isExplorer ? 9.5 : 9.2}
             valuePerPrice={isExplorer ? 9.6 : 9.0}
           />
+
+          {/* Bloque de adquisición y disponibilidad contextual (nunca al inicio) */}
+          {post.legoSet && (
+            <AffiliateBox set={post.legoSet} links={post.affiliateLinks} />
+          )}
         </div>
 
         {/* Barra lateral de metadatos rápidos en escritorio */}
-        <aside className="hidden lg:block sticky top-24 space-y-6 text-xs border border-zinc-200 bg-white p-5 rounded-lg">
+        <aside className="hidden lg:block sticky top-24 space-y-6 text-xs border border-zinc-200 bg-white p-5 rounded-lg shadow-sm">
           <div className="space-y-1">
             <span className="font-semibold text-zinc-400 uppercase tracking-widest text-[10px]">Línea Temática</span>
             <p className="font-bold text-zinc-900 text-sm">{post.legoSet?.lineTheme}</p>
