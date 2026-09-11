@@ -9,6 +9,7 @@ import { ProsConsCard } from "@/components/blog/pros-cons-card";
 import { BuildVerdictCard } from "@/components/blog/build-verdict-card";
 import { SetSpecsCard } from "@/components/affiliate/set-specs-card";
 import { AffiliateBox } from "@/components/affiliate/affiliate-box";
+import { SchemaJsonLd } from "@/components/seo/schema-json-ld";
 
 interface ReviewPageProps {
   params: Promise<{ slug: string }>;
@@ -55,6 +56,8 @@ export default async function ReviewPage({ params }: ReviewPageProps) {
   const toc = extractTableOfContents(post.contentMarkdown);
 
   const isExplorer = slug.includes("10497");
+  const finalScore = isExplorer ? 9.6 : 9.4;
+
   const pros = isExplorer
     ? [
         "100% piezas serigrafiadas, cero pegatinas.",
@@ -82,6 +85,9 @@ export default async function ReviewPage({ params }: ReviewPageProps) {
 
   return (
     <article className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+      {/* Marcado estructurado Schema.org JSON-LD (Article + Product) */}
+      <SchemaJsonLd post={post} ratingValue={finalScore} />
+
       <ArticleHeader
         title={post.title}
         excerpt={post.excerpt}
@@ -107,7 +113,7 @@ export default async function ReviewPage({ params }: ReviewPageProps) {
 
           {/* Veredicto de montaje */}
           <BuildVerdictCard
-            finalScore={isExplorer ? 9.6 : 9.4}
+            finalScore={finalScore}
             verdictSummary={
               isExplorer
                 ? "Una carta de amor al coleccionista clásico ejecutada con la más depurada técnica contemporánea de ensamblaje."
