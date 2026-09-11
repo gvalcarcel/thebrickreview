@@ -1,1 +1,22 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Next.js build output
+.next/
+out/
+
+# Environment files
+.env*.local
+
+# Database
+local.db*
+drizzle/
+
+# Vibecode backups
 .vibecode-backup*/
+
+# OS files
+Thumbs.db
+.DS_Store

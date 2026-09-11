@@ -1,0 +1,55 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FAFAFA;
+  --foreground: #18181B;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tipografía de lectura para artículos editoriales */
+.prose-editorial {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.125rem;
+  line-height: 1.85;
+}
+
+.prose-editorial p {
+  margin-bottom: 1.5rem;
+  color: #27272A;
+}
+
+.prose-editorial h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #18181B;
+}
+
+.prose-editorial h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: #18181B;
+}
+
+.prose-editorial blockquote {
+  border-left: 3px solid #D97706;
+  padding-left: 1.25rem;
+  font-style: italic;
+  color: #52525B;
+  margin: 1.75rem 0;
+}
