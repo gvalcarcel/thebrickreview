@@ -20,3 +20,8 @@ drizzle/
 # OS files
 Thumbs.db
 .DS_Store
+
+# Build info & scratch
+tsconfig.tsbuildinfo
+scratch/
+

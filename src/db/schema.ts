@@ -11,7 +11,7 @@ export const legoSets = sqliteTable("lego_sets", {
   officialPriceCents: integer("official_price_cents"), // en céntimos para evitar decimales
   releaseYear: integer("release_year").notNull(),
   isRetired: integer("is_retired", { mode: "boolean" }).default(false).notNull(),
-  difficulty: text("difficulty", { enum: ["Iniciación", "Intermedio", "Avanzado", "Experto / AFOL"] }).default("Intermedio").notNull(),
+  difficulty: text("difficulty", { enum: ["Beginner", "Intermediate", "Advanced", "Expert / AFOL", "Iniciación", "Intermedio", "Avanzado"] }).default("Intermediate").notNull(),
   imageUrl: text("image_url"),
   createdAt: integer("created_at", { mode: "timestamp" }).$defaultFn(() => new Date()),
 });

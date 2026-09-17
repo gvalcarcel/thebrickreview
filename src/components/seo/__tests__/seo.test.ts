@@ -10,7 +10,7 @@ describe("Technical SEO & Schema Tests", () => {
 
     const urls = map.map((entry) => entry.url);
     expect(urls).toContain("https://thebrickreview.com");
-    expect(urls).toContain("https://thebrickreview.com/resenas/galaxy-explorer-10497");
+    expect(urls).toContain("https://thebrickreview.com/resenas/delorean-regreso-al-futuro-10300");
     expect(urls).toContain("https://thebrickreview.com/categorias/icons");
     expect(urls).toContain("https://thebrickreview.com/legal/aviso-legal");
     expect(urls).toContain("https://thebrickreview.com/legal/afiliacion");
@@ -27,9 +27,9 @@ describe("Technical SEO & Schema Tests", () => {
   });
 
   it("should verify schema metadata for sample posts", () => {
-    const post = SAMPLE_POSTS["galaxy-explorer-10497"];
-    expect(post.legoSet?.name).toBe("Galaxy Explorer");
-    expect(post.legoSet?.setNumber).toBe("10497");
-    expect(post.legoSet?.isRetired).toBe(true);
+    const post = SAMPLE_POSTS["millennium-falcon-ucs-75192"];
+    expect(post.legoSet?.name).toBe("Millennium Falcon Ultimate Collector Series");
+    expect(post.legoSet?.setNumber).toBe("75192");
+    expect(post.legoSet?.isRetired).toBe(false);
   });
 });

@@ -4,16 +4,16 @@ import { SAMPLE_SETS } from "@/lib/posts";
 
 describe("Affiliate Redirection & Cloaking Tests", () => {
   it("TEST-001: should return HTTP 307 with proper location and legal headers", async () => {
-    const req = new Request("https://thebrickreview.com/ir/aliexpress/aliexpress-galaxy-explorer", {
+    const req = new Request("https://thebrickreview.com/ir/aliexpress/aliexpress-arcade-pinball-machine-11374", {
       headers: {
-        "referer": "https://thebrickreview.com/resenas/galaxy-explorer-10497",
+        "referer": "https://thebrickreview.com/reviews/arcade-pinball-machine-11374",
         "user-agent": "Vitest-TestRunner/1.0",
       },
     });
 
     const params = Promise.resolve({
       retailer: "aliexpress",
-      slug: "aliexpress-galaxy-explorer",
+      slug: "aliexpress-arcade-pinball-machine-11374",
     });
 
     const res = await GET(req, { params });
@@ -30,12 +30,14 @@ describe("Affiliate Redirection & Cloaking Tests", () => {
     expect(res.headers.get("Cache-Control")).toContain("no-cache");
   });
 
-  it("TEST-002: should handle retired sets metadata correctly", () => {
-    const galaxyExplorer = SAMPLE_SETS["10497"];
-    expect(galaxyExplorer.isRetired).toBe(true);
-
+  it("TEST-002: should verify set metadata correctly", () => {
     const falcon = SAMPLE_SETS["75192"];
     expect(falcon.isRetired).toBe(false);
+    expect(falcon.difficulty).toBe("Expert / AFOL");
+
+    const pinball = SAMPLE_SETS["11374"];
+    expect(pinball.isRetired).toBe(false);
+    expect(pinball.clutchScore).toBe(9.8);
   });
 
   it("should gracefully fallback to home if affiliate slug is not found", async () => {

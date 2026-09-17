@@ -32,7 +32,13 @@ describe("Faceted Search & Filter Engine Tests", () => {
         selectedTheme === "TODOS" || post.legoSet?.lineTheme === selectedTheme;
 
       const matchesDifficulty =
-        selectedDifficulty === "TODOS" || post.legoSet?.difficulty === selectedDifficulty;
+        selectedDifficulty === "TODOS" ||
+        selectedDifficulty === "ALL" ||
+        post.legoSet?.difficulty === selectedDifficulty ||
+        (selectedDifficulty === "Experto / AFOL" && post.legoSet?.difficulty === "Expert / AFOL") ||
+        (selectedDifficulty === "Avanzado" && post.legoSet?.difficulty === "Advanced") ||
+        (selectedDifficulty === "Intermedio" && post.legoSet?.difficulty === "Intermediate") ||
+        (selectedDifficulty === "Iniciación" && post.legoSet?.difficulty === "Beginner");
 
       const matchesRetired =
         retiredFilter === "TODOS" ||
@@ -59,44 +65,102 @@ describe("Faceted Search & Filter Engine Tests", () => {
     const posts = await getAllPosts();
 
     const starWars = filterPosts(posts, { selectedTheme: "Star Wars" });
-    expect(starWars).toHaveLength(1);
-    expect(starWars[0].legoSet?.setNumber).toBe("75192");
+    expect(starWars).toHaveLength(3);
+    expect(starWars.map((p) => p.legoSet?.setNumber)).toContain("75192");
+    expect(starWars.map((p) => p.legoSet?.setNumber)).toContain("75442");
+    expect(starWars.map((p) => p.legoSet?.setNumber)).toContain("75419");
 
     const technic = filterPosts(posts, { selectedTheme: "Technic" });
-    expect(technic).toHaveLength(1);
-    expect(technic[0].legoSet?.setNumber).toBe("42143");
+    expect(technic).toHaveLength(0);
 
     const ideas = filterPosts(posts, { selectedTheme: "Ideas" });
-    expect(ideas).toHaveLength(1);
-    expect(ideas[0].legoSet?.setNumber).toBe("21325");
+    expect(ideas).toHaveLength(2);
+    expect(ideas.map((p) => p.legoSet?.setNumber)).toContain("21330");
+    expect(ideas.map((p) => p.legoSet?.setNumber)).toContain("21368");
+
+    const icons = filterPosts(posts, { selectedTheme: "Icons" });
+    expect(icons).toHaveLength(8);
+    expect(icons.map((p) => p.legoSet?.setNumber)).toContain("10300");
+    expect(icons.map((p) => p.legoSet?.setNumber)).toContain("11374");
+    expect(icons.map((p) => p.legoSet?.setNumber)).toContain("40926");
+    expect(icons.map((p) => p.legoSet?.setNumber)).toContain("72051");
+    expect(icons.map((p) => p.legoSet?.setNumber)).toContain("43014");
+    expect(icons.map((p) => p.legoSet?.setNumber)).toContain("10365");
+    expect(icons.map((p) => p.legoSet?.setNumber)).toContain("10303");
+    expect(icons.map((p) => p.legoSet?.setNumber)).toContain("10333");
+
+    const dc = filterPosts(posts, { selectedTheme: "DC" });
+    expect(dc).toHaveLength(1);
+    expect(dc[0].legoSet?.setNumber).toBe("76271");
+
+    const disney = filterPosts(posts, { selectedTheme: "Disney" });
+    expect(disney).toHaveLength(1);
+    expect(disney[0].legoSet?.setNumber).toBe("43263");
+
+    const editions = filterPosts(posts, { selectedTheme: "Editions" });
+    expect(editions).toHaveLength(2);
+    expect(editions.map((p) => p.legoSet?.setNumber)).toContain("43015");
+    expect(editions.map((p) => p.legoSet?.setNumber)).toContain("43011");
   });
 
   it("should filter posts by difficulty tier", async () => {
     const posts = await getAllPosts();
 
     const expert = filterPosts(posts, { selectedDifficulty: "Experto / AFOL" });
-    expect(expert.length).toBe(2);
+    expect(expert.length).toBe(6);
     expect(expert.map((p) => p.legoSet?.setNumber)).toContain("75192");
-    expect(expert.map((p) => p.legoSet?.setNumber)).toContain("42143");
+    expect(expert.map((p) => p.legoSet?.setNumber)).toContain("76271");
+    expect(expert.map((p) => p.legoSet?.setNumber)).toContain("75442");
+    expect(expert.map((p) => p.legoSet?.setNumber)).toContain("10303");
+    expect(expert.map((p) => p.legoSet?.setNumber)).toContain("10333");
+    expect(expert.map((p) => p.legoSet?.setNumber)).toContain("75419");
 
     const advanced = filterPosts(posts, { selectedDifficulty: "Avanzado" });
-    expect(advanced.length).toBe(2);
+    expect(advanced.length).toBe(6);
+    expect(advanced.map((p) => p.legoSet?.setNumber)).toContain("10300");
+    expect(advanced.map((p) => p.legoSet?.setNumber)).toContain("21330");
+    expect(advanced.map((p) => p.legoSet?.setNumber)).toContain("11374");
+    expect(advanced.map((p) => p.legoSet?.setNumber)).toContain("72051");
+    expect(advanced.map((p) => p.legoSet?.setNumber)).toContain("43263");
+    expect(advanced.map((p) => p.legoSet?.setNumber)).toContain("10365");
 
     const intermediate = filterPosts(posts, { selectedDifficulty: "Intermedio" });
-    expect(intermediate.length).toBe(1);
-    expect(intermediate[0].legoSet?.setNumber).toBe("10497");
+    expect(intermediate.length).toBe(4);
+    expect(intermediate.map((p) => p.legoSet?.setNumber)).toContain("40926");
+    expect(intermediate.map((p) => p.legoSet?.setNumber)).toContain("21368");
+    expect(intermediate.map((p) => p.legoSet?.setNumber)).toContain("43014");
+    expect(intermediate.map((p) => p.legoSet?.setNumber)).toContain("43015");
+
+    const beginner = filterPosts(posts, { selectedDifficulty: "Iniciación" });
+    expect(beginner.length).toBe(1);
+    expect(beginner[0].legoSet?.setNumber).toBe("43011");
   });
 
   it("should filter posts by retired vs active catalog status", async () => {
     const posts = await getAllPosts();
 
     const retired = filterPosts(posts, { retiredFilter: "RETIRED" });
-    expect(retired.length).toBe(2);
-    expect(retired.map((p) => p.legoSet?.setNumber)).toContain("10497");
-    expect(retired.map((p) => p.legoSet?.setNumber)).toContain("21325");
+    expect(retired.length).toBe(0);
 
     const active = filterPosts(posts, { retiredFilter: "ACTIVO" });
-    expect(active.length).toBe(3);
+    expect(active.length).toBe(17);
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("75192");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("10300");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("21330");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("11374");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("40926");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("21368");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("72051");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("76271");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("43263");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("43014");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("75442");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("43015");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("10365");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("10303");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("10333");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("75419");
+    expect(active.map((p) => p.legoSet?.setNumber)).toContain("43011");
   });
 
   it("should return empty list when no criteria match", async () => {

@@ -5,21 +5,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://thebrickreview.com";
   const posts = await getAllPosts();
 
-  const postUrls = posts.map((post) => ({
-    url: `${baseUrl}/resenas/${post.slug}`,
+  const englishPostUrls = posts.map((post) => ({
+    url: `${baseUrl}/reviews/${post.slug}`,
     lastModified: post.updatedAt || new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
-  const categoryUrls = ["icons", "star-wars", "technic", "ideas"].map((cat) => ({
-    url: `${baseUrl}/categorias/${cat}`,
+  const compatPostUrls = posts.map((post) => ({
+    url: `${baseUrl}/resenas/${post.slug}`,
+    lastModified: post.updatedAt || new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
+  const englishCategories = ["icons", "star-wars", "technic", "ideas", "disney", "dc", "editions"].map((cat) => ({
+    url: `${baseUrl}/categories/${cat}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
 
-  const legalUrls = ["aviso-legal", "afiliacion", "privacidad"].map((slug) => ({
+  const compatCategories = ["icons", "star-wars", "technic", "ideas", "disney", "dc", "editions"].map((cat) => ({
+    url: `${baseUrl}/categorias/${cat}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  const legalUrls = [
+    "terms",
+    "affiliate",
+    "privacy",
+    "aviso-legal",
+    "afiliacion",
+    "privacidad",
+  ].map((slug) => ({
     url: `${baseUrl}/legal/${slug}`,
     lastModified: new Date(),
     changeFrequency: "yearly" as const,
@@ -33,8 +54,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily",
       priority: 1.0,
     },
-    ...postUrls,
-    ...categoryUrls,
+    ...englishPostUrls,
+    ...compatPostUrls,
+    ...englishCategories,
+    ...compatCategories,
     ...legalUrls,
   ];
 }

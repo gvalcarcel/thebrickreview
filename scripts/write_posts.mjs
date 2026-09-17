@@ -1,4 +1,9 @@
-import type { PostWithSet, LegoSet, AffiliateLink, BuildGalleryImage } from "@/types";
+import fs from "fs";
+import path from "path";
+
+const targetPath = path.resolve("src/lib/posts.ts");
+
+const content = `import type { PostWithSet, LegoSet, AffiliateLink, BuildGalleryImage } from "@/types";
 
 export const SAMPLE_SETS: Record<string, LegoSet & { affiliateLinks: AffiliateLink[]; scaleCategory?: string; clutchScore?: number; galleryImages?: BuildGalleryImage[] }> = {
   "75192": {
@@ -1143,7 +1148,7 @@ export const SAMPLE_POSTS: Record<string, PostWithSet> = {
       { label: "Instruction Flow", score: 9.2, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.8, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: The Inevitable Monolith
 
 Originally unveiled in 2017, the Ultimate Collector Series Millennium Falcon (reference 75192) continues to hold an almost mythical status among adult brick builders. Measuring an astounding 84 centimeters long by 60 centimeters wide and weighing over 13 kilograms, this is not a casual display model: it is a massive architectural installation in interlocking ABS.
@@ -1172,7 +1177,7 @@ The forward mandibles and rear engine cooling rings are a symphony of textural d
 The set bridges generations by providing modular components for both the Original Trilogy (classic round sensor dish, young Han & Leia) and the Sequel Trilogy (rectangular dish, Rey & Finn). Interior access reveals the main lounge with the Dejarik holochess seating and engineering consoles.
 
 Given its imposing dimensions, serious collectors frequently pair this build with custom steel or acrylic vertical display brackets, tilting the ship 70 degrees to reduce shelf footprint while showcasing its breathtaking surface topography.
-`,
+\`,
   },
 
   "delorean-regreso-al-futuro-10300": {
@@ -1207,7 +1212,7 @@ Given its imposing dimensions, serious collectors frequently pair this build wit
       { label: "Instruction Flow", score: 9.5, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.3, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: Redemption of a Pop-Culture Legend
 
 Following the modest 2013 Cuusoo release, fans of Robert Zemeckis' iconic trilogy long clamored for a large-scale collector model that could do justice to Giorgetto Giugiaro's razor-sharp stainless steel lines. With set 10300, the design team did not simply deliver a striking automotive silhouette: they engineered a transformable platform capable of faithfully representing the DeLorean from any of the three films.
@@ -1236,7 +1241,7 @@ The kit includes all auxiliary elements to switch variants at will:
 - **Part I**: Lightning rod pole, hook assembly, and plutonium chamber reactor.
 - **Part II**: Mr. Fusion home energy generator and hover-converted wheels.
 - **Part III**: Hood-mounted vacuum tube circuit board with red-rimmed whitewall tires.
-`,
+\`,
   },
   "home-alone-21330": {
     id: "post-21330",
@@ -1270,7 +1275,7 @@ The kit includes all auxiliary elements to switch variants at will:
       { label: "Instruction Flow", score: 9.6, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.7, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: The Suburban Fortress of 1990
 
 Few residences in modern cinematic lore are as instantly recognizable as the grand Georgian red-brick home of the McCallister family from Chris Columbus and John Hughes' 1990 holiday classic *Home Alone*. Originating from the LEGO Ideas platform via Ukrainian fan designer Alex Storozhuk (*adwind*), reference 21330 transforms the sprawling suburban estate into a formidable 3,955-piece architectural marvel.
@@ -1315,7 +1320,7 @@ The set includes five character minifigures with cinema-accurate dual facial exp
 - **Kate McCallister**: Kevin's mother, capturing the poignant emotional return at the climax.
 
 Set 21330 stands as one of the most comprehensive, joyful, and technically sophisticated licensed architecture builds ever released, marrying substantial brick heft with timeless cinematic storytelling.
-`,
+\`,
   },
   "arcade-pinball-machine-11374": {
     id: "post-11374",
@@ -1349,7 +1354,7 @@ Set 21330 stands as one of the most comprehensive, joyful, and technically sophi
       { label: "Instruction Flow", score: 9.6, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.7, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: The Revival of Analog Arcade Sorcery
 
 Before microprocessor displays and high-refresh screens dominated electronic entertainment, the golden age of coin-op arcades belonged to the sensory thrills of Bally, Williams, and Gottlieb pinball tables. With reference 11374, the LEGO Icons design team tackles one of the most ambitious engineering briefs in brick history: constructing a fully functional, gravity-driven tabletop pinball machine across 2,274 precision elements.
@@ -1389,7 +1394,7 @@ Perched atop the cabinet is an authentic vertical backglass adorned with vibrant
 For AFOL collectors, the set offers an irresistible bonus: the debut of the official **Light Blue Classic Space Astronaut** minifigure, complete with period-accurate vintage helmet, oxygen tanks, and classic gold planetary insignia. Accompanying the astronaut is an 80s arcade gamer minifigure clad in a retro gaming windbreaker and high-top sneakers.
 
 Set 11374 transcends static display: it is an enduring, playable monument to tactile mechanical horology that captures the unmistakable heartbeat of the arcade era.
-`,
+\`,
   },
 
   "sega-genesis-console-40926": {
@@ -1424,7 +1429,7 @@ Set 11374 transcends static display: it is an enduring, playable monument to tac
       { label: "Instruction Flow", score: 9.5, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.4, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: The 16-Bit Console Wars in Compact Scale
 
 Few machines in video gaming history carry the cultural swagger of SEGA's flagship 16-bit juggernaut. Released at the dawn of the 1990s as the **SEGA Genesis** in North America and the **SEGA Mega Drive** across Europe and Japan, this matte-black console challenged established industry dynasties with blistering processor speed and irreverent arcade attitude.
@@ -1465,7 +1470,7 @@ Despite its compact desk footprint, the console incorporates functional tactile 
 The set includes two replica 3-button control pads connected to the front 9-pin DE-9 ports via flexible ribbed rubber tubing:
 - The controllers feature printed circular directional d-pads and ergonomic curved grips mimicking SEGA's revolutionary crescent pad geometry.
 - On display, the console commands immediate attention: a sleek, tactile celebration of retro industrial design that captures the pulse of 90s gaming without monopolizing an entire bookshelf.
-`,
+\`,
   },
 
   "peanuts-snoopys-doghouse-21368": {
@@ -1500,7 +1505,7 @@ The set includes two replica 3-button control pads connected to the front 9-pin 
       { label: "Instruction Flow", score: 9.6, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.6, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: 75 Years of Peanuts in Three Dimensions
 
 Few cultural touchstones in comic strip history resonate with the timeless grace of Charles M. Schulz's *Peanuts*. Originating from fan designer *bossofdos64* and finalized by senior model designer Marina Stampoli, reference **21368: Peanuts: Snoopy's Doghouse** commemorates the strip's historic 75th anniversary.
@@ -1534,7 +1539,7 @@ True to Schulz's multi-layered fantasy sequences, the set includes full accessor
 3. **Campfire Vignette**: A compact brick-built campfire with roasting sticks and toasted marshmallows for outdoor scout expeditions.
 
 Set 21368 is a heartfelt, tactile triumph—a sculptural masterclass that honors seventy-five years of comic literature with wit, architectural warmth, and nostalgic perfection.
-`,
+\`,
   },
   "donkey-kong-arcade-72051": {
     id: "post-72051",
@@ -1568,7 +1573,7 @@ Set 21368 is a heartfelt, tactile triumph—a sculptural masterclass that honors
       { label: "Instruction Flow", score: 9.5, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.7, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: The Genesis of Modern Gaming (1981–2026)
 
 In 1981, a young industrial designer named Shigeru Miyamoto crafted an arcade cabinet that rescued Nintendo of America and redefined the entertainment industry forever. Celebrating its monumental 45th anniversary, reference **72051: Donkey Kong Arcade Machine** captures that historic coin-op revolution in an ambitious 1,367-piece scale tribute.
@@ -1611,7 +1616,7 @@ Opening the rear inspection door reveals a love letter to arcade restoration ent
 - **Circuit Board PCB**: A detailed SNOT tile assembly replicates the iconic arcade motherboard, complete with ceramic capacitors, DIP switches, heat sinks, and a silkscreen easter egg noting the 1981 launch date and designer coordinates.
 
 Set 72051 is an architectural masterpiece of retro engineering—combining glorious nostalgic cabinet presence with intricate mechanical kinetic play that celebrates forty-five years of gaming heritage.
-`,
+\`,
   },
   "batman-gotham-city-76271": {
     id: "post-76271",
@@ -1645,7 +1650,7 @@ Set 72051 is an architectural masterpiece of retro engineering—combining glori
       { label: "Instruction Flow", score: 9.6, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.8, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: Dark Deco Architecture Born from Black Paper
 
 In 1992, producers Bruce Timm and Eric Radomski redefined animated television by rendering *Batman: The Animated Series* on black paper instead of white, forging a brooding, timeless visual aesthetic christened "Dark Deco." Over three decades later, reference **76271: Batman: The Animated Series Gotham City** manifests that iconic atmosphere into interlocking ABS across an enormous 4,210-piece bas-relief canvas.
@@ -1692,7 +1697,7 @@ To complement the massive wall installation, the set includes a standalone displ
 The minifigures assemble onto a magnificent freestanding plinth flanked by two perched gothic stone gargoyles, allowing them to guard the room directly beneath the mounted cityscape.
 
 Set 76271 is a crowning achievement in adult brick design—a sophisticated, dark-deco architectural tapestry that bridges the worlds of pop culture art, mechanical structural design, and nostalgic reverence.
-`,
+\`,
   },
   "beauty-and-the-beast-castle-43263": {
     id: "post-43263",
@@ -1727,7 +1732,7 @@ Set 76271 is a crowning achievement in adult brick design—a sophisticated, dar
       { label: "Instruction Flow", score: 9.7, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.8, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: Romantic Gothic Architecture in Interlocking ABS
 
 Few animated landscapes hold the cultural resonance and emotional resonance of the Beast's enchanted French provincial castle from Disney's 1991 animated classic *Beauty and the Beast*. With set **43263: Beauty and the Beast Castle**, this iconic fairy-tale redoubt arrives in an imposing 2,916-element collector-tier architecture model standing 53 centimeters (over 20.8 inches) high, 33 centimeters wide, and 15 centimeters deep.
@@ -1775,7 +1780,7 @@ To populate this magnificent 4-level fairy-tale monument, set 43263 includes an 
 6. **Enchanted Castle Retinue**: Exquisitely detailed brick-built and custom-molded figures representing **Lumière** with twin candlestick flames, **Cogsworth (Din-Don)** with pendulum chest printing, **Mrs. Potts**, little **Chip** with his trademark rim chip, and **Fifi (Babette)** the glamorous feather duster.
 
 Set 43263 is a triumph of adult collector design—a majestic 53 cm architectural showstopper that pairs French gothic grandeur with genuine mechanical play, standing as an enduring tribute to one of cinema's greatest romantic tales.
-`,
+\`,
   },
   "scuderia-ferrari-hp-charles-leclerc-helmet-43014": {
     id: "post-43014",
@@ -1810,7 +1815,7 @@ Set 43263 is a triumph of adult collector design—a majestic 53 cm architectura
       { label: "Instruction Flow", score: 9.5, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.6, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: Maranello Precision in Interlocking ABS
 
 The helmet of a modern Formula 1 driver is far more than protective equipment; it is a high-speed canvas where cutting-edge carbon-composite aerodynamics, team heritage, national identity, and deeply personal memories converge. With set **43014: Scuderia Ferrari HP Charles Leclerc Helmet**, this intersection arrives in an exquisite 886-piece collector display sculpture standing 18 centimeters (over 7 inches) high, 11 centimeters wide, and 13 centimeters deep.
@@ -1854,7 +1859,7 @@ Complementing the 1:2 scale helmet is a thoughtfully engineered collector displa
 - **Exclusive Charles Leclerc Minifigure**: Unlike previous standalone helmet releases, set 43014 includes a dedicated Charles Leclerc minifigure in his complete 2025 team racing overalls with dual-molded arms, sponsor logos, and a swappable tousled hairpiece and driver's helmet.
 
 Set 43014 is a triumph of modern compact AFOL design—combining aerodynamic structural elegance, Ferrari passion, and personal racing heritage into an irresistible display centerpiece for any motorsport enthusiast.
-`,
+\`,
   },
   "mandalorian-n1-starfighter-75442": {
     id: "post-75442",
@@ -1889,7 +1894,7 @@ Set 43014 is a triumph of modern compact AFOL design—combining aerodynamic str
       { label: "Instruction Flow", score: 9.6, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.8, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: The Stripped-Down Naboo Hotrod
 
 In the post-Imperial Outer Rim, utility and raw sublight thrust supersede pristine royal decorum. When Din Djarin lost the Razor Crest to Gideon's orbital bombardment, mechanic Peli Motto delivered the unexpected replacement: a decommissioned Naboo N-1 Starfighter stripped of its yellow chromium finery, gutted of unnecessary luxury, and supercharged with exposed aftermarket turbinic manifolds.
@@ -1933,7 +1938,7 @@ An Ultimate Collector Series release is incomplete without an authoritative pres
 - **Collector-Grade Minifigure Duo**: Included with the stand are an impeccably printed Din Djarin minifigure—featuring newly detailed arm printing, bespoke beskar helmet printing, and a brick-built Darksaber—alongside a micro-scale Grogu figure wrapped in his sandy-brown clan cloak.
 
 Set 75442 stands as an architectural triumph for AFOL builders and Star Wars enthusiasts alike—striking the elusive equilibrium between rigid structural longevity and breathtaking aerodynamic elegance.
-`,
+\`,
   },
   "lionel-messi-soccer-legend-43015": {
     id: "post-43015",
@@ -1967,7 +1972,7 @@ Set 75442 stands as an architectural triumph for AFOL builders and Star Wars ent
       { label: "Instruction Flow", score: 9.5, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.7, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: The Maestro in ABS Geometry
 
 Capturing human athletic anatomy in interlocking ABS bricks is among the most unforgiving design challenges in the builder hobby. While mechs and armored droids forgive angular blockiness, a world-renowned athlete's organic muscle tone, dynamic balance, and signature physical gestures demand subtle compound curves and flawless equilibrium.
@@ -2011,7 +2016,7 @@ A buildable figure standing 27 cm tall requires unyielding ground anchoring:
 - **Foot Locator Pins**: Dual reinforced Technic pins lock the boots directly into the internal base framework, providing worry-free desktop stability during casual handling or vibration.
 
 Set 43015 is a triumphant opening chapter for the LEGO Editions line—blending athletic storytelling, sculptural sophistication, and kinetic poseability into an irresistible centerpiece for sports collectors worldwide.
-`,
+\`,
   },
   "captain-jack-sparrows-pirate-ship-10365": {
     id: "post-10365",
@@ -2046,7 +2051,7 @@ Set 43015 is a triumphant opening chapter for the LEGO Editions line—blending 
       { label: "Instruction Flow", score: 9.6, iconType: "flow" },
       { label: "Part Quality & Clutch", score: 9.8, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: The Return of the Black Pearl
 
 For more than a decade, adult maritime builders and *Pirates of the Caribbean* aficionados have revered the 2011 *Black Pearl* (4184) as an untouchable collector holy grail. Yet that classic 804-piece playset was fundamentally constrained by standard prefab hull elements and simplified rigging. With **10365: Captain Jack Sparrow's Pirate Ship**, the LEGO Icons design team delivers an uncompromising 2,862-piece masterclass in 18+ naval architecture.
@@ -2090,7 +2095,7 @@ A flagship of this magnitude requires an all-star crew and an authoritative coll
 - **Architectural Display Cradle**: The model rests upon a sturdy matte-black display stand engineered to support the ship's 2.8-kilogram weight without stressing the lower keel tiles. A printed plaque detailing the ship's dimensions and cinematic provenance completes the museum-grade presentation.
 
 Set 10365 is not merely a model; it is the definitive monument to maritime block craftsmanship—striking an awe-inspiring balance between rigorous naval engineering, modular storytelling, and cinematic pirate romance.
-`,
+\`,
   },
 
   "loop-coaster-10303": {
@@ -2127,7 +2132,7 @@ Set 10365 is not merely a model; it is the definitive monument to maritime block
       { label: "Instruction & Tuning Flow", score: 9.5, iconType: "flow" },
       { label: "Part Quality & Friction Tolerances", score: 9.7, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: The Apex of Kinetic Block Engineering
 
 When the LEGO Fairground Collection debuted its first giant coaster (10261) in 2018, it captivated adult fans of LEGO (AFOLs) with its vast chain lift and sprawling horizontal footprint. However, mechanical purists noted a key architectural omission: vertical inversions. Roller coaster physics dictate that sending a train upside down purely on gravity momentum demands extraordinary kinetic energy management, millimeter track alignment, and specialized non-circular track curvature.
@@ -2170,7 +2175,7 @@ A fairground masterwork relies on narrative detail and operational versatility:
 - **Seamless Motorization Readiness**: At the rear of the tower base sits an exposed gear train linkage designed to accept a LEGO Powered Up Medium Linear Motor (88013) and Battery Box (88015). When motorized, the loop coaster operates continuously: lifting the train, releasing it through both clothoid loops, braking into the station, and cycling back to the elevator tower in an endless kinetic ballet.
 
 Set 10303 stands as an unquestionable AFOL triumph: a towering, functional monument that translates real-world amusement engineering and physics into 3,756 interlocking elements.
-`,
+\`,
   },
   "the-lord-of-the-rings-barad-dur-10333": {
     id: "post-10333",
@@ -2205,7 +2210,7 @@ Set 10303 stands as an unquestionable AFOL triumph: a towering, functional monum
       { label: "Mechanical Gates & Lighting", score: 9.8, iconType: "flow" },
       { label: "Part Quality & Exclusive Minifigs", score: 10.0, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: The Sovereign of Shadow in Interlocking ABS
 
 Following the rapturous reception of 2023's *Rivendell* (10316), adult *The Lord of the Rings* collectors wondered whether the design team could match that elven architectural poetry with the menacing, jagged volcanic brutality of Mordor. With **10333: Barad-dûr**, the LEGO Icons team answered decisively. Comprising 5,471 pieces and soaring to an imposing **83 centimeters (32.5 inches)** in height, this monolith is the definitive realization of Sauron's impenetrable fortress.
@@ -2250,7 +2255,7 @@ The minifigure selection is legendary:
 - **The Quest of the Ring**: Frodo Baggins and Samwise Gamgee in battered travel cloaks, accompanied by an articulated Gollum clutching a raw fish.
 
 Set 10333 is an unmitigated masterpiece—a dark, atmospheric monument that captures Tolkien's high fantasy with breathtaking architectural scale.
-`,
+\`,
   },
   "death-star-75419": {
     id: "post-75419",
@@ -2285,7 +2290,7 @@ Set 10333 is an unmitigated masterpiece—a dark, atmospheric monument that capt
       { label: "Scene Integration & Cinematic Detail", score: 9.9, iconType: "flow" },
       { label: "Character Cast (38 Figures)", score: 10.0, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: The Ultimate Weapon in the Galaxy
 
 Ever since the legendary 2008 *Death Star* (10188) and its 2016 successor (75159), adult collectors have dreamed of an uncompromising, modern Ultimate Collector Series (UCS) cutaway battlestation that married high-density display aesthetics with the beloved playset diorama rooms. With **75419: Death Star**, LEGO Star Wars has created the largest, most ambitious set in the theme's 26-year history.
@@ -2322,7 +2327,7 @@ Set 75419 shatters every previous character record with **38 distinct figures**:
 - **Troopers & Crew**: Stormtroopers with dual-molded helmets, Imperial Gunners, Death Star Troopers, Navy Troopers, Royal Guards with fabric cloaks, and Detention security guards.
 
 Set 75419 is more than a model—it is an entire cinematic universe preserved in 9,023 pieces of flawless block architecture.
-`,
+\`,
   },
   "lionel-messi-soccer-highlights-43011": {
     id: "post-43011",
@@ -2357,7 +2362,7 @@ Set 75419 is more than a model—it is an entire cinematic universe preserved in
       { label: "Assembly Accessibility", score: 9.5, iconType: "flow" },
       { label: "Minifigure Detail & Graphics", score: 9.4, iconType: "quality" },
     ],
-    contentMarkdown: `
+    contentMarkdown: \`
 ## Introduction: Stadium Action in Miniature
 
 While **43015** delivers an ambitious 958-piece anatomical sculpture of Lionel Messi, LEGO Editions designed **43011: Lionel Messi – Soccer Highlights** to capture the kinetic thrill of match day. With 500 pieces, an exclusive minifigure, and functional mechanical gameplay, this set transforms the penalty box into a captivating desktop action diorama.
@@ -2392,7 +2397,7 @@ The centerpiece is the collectible Lionel Messi minifigure:
 - **Dual Facial Print**: One expression focused and determined before the penalty kick; the other celebrating with a triumphant victory smile.
 
 Set 43011 is an accessible, joyful addition to the LEGO Editions line—bringing tactile matchday energy to any fan's desk or shelf.
-`,
+\`,
   },
 };
 
@@ -2545,3 +2550,7 @@ export async function getPostsByCategory(categorySlug: string): Promise<PostWith
     (p) => p.legoSet?.lineTheme.toLowerCase() === norm
   );
 }
+`;
+
+fs.writeFileSync(targetPath, content, "utf-8");
+console.log("Successfully wrote English catalog to " + targetPath);

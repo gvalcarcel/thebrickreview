@@ -1,4 +1,4 @@
-﻿# TheBrickReview - All Context
+# TheBrickReview - All Context
 
 Last updated: 11-09-2026
 
@@ -122,8 +122,49 @@ TheBrickReview/
 
 ---
 
+## Current Catalog Inventory (17 Active Sets)
+
+1. `75192`: Millennium Falcon UCS (Star Wars) - 7,541 pcs
+2. `10300`: Back to the Future DeLorean (Icons) - 1,872 pcs
+3. `21330`: Home Alone McCallister House (Ideas) - 3,955 pcs
+4. `11374`: Arcade Pinball Machine (Icons) - 3,042 pcs
+5. `40926`: SEGA Genesis / Mega Drive Console (Icons) - 1,228 pcs
+6. `21368`: Peanuts: Snoopy's Doghouse (Ideas) - 964 pcs
+7. `72051`: Donkey Kong Arcade Machine (Icons) - 1,367 pcs
+8. `76271`: Batman: The Animated Series Gotham City (DC) - 4,210 pcs
+9. `43263`: Beauty and the Beast Castle (Disney) - 2,916 pcs
+10. `43014`: Scuderia Ferrari HP Charles Leclerc Helmet (Icons) - 886 pcs
+11. `75442`: The Mandalorian's N-1 Starfighter UCS (Star Wars) - 1,809 pcs
+12. `43015`: Lionel Messi – Soccer Legend (Editions) - 958 pcs
+13. `10365`: Captain Jack Sparrow's Pirate Ship (Icons) - 2,862 pcs
+14. `10303`: Loop Coaster (Icons) - 3,756 pcs
+15. `10333`: The Lord of the Rings: Barad-dûr (Icons) - 5,471 pcs
+16. `75419`: Death Star (Star Wars) - 9,023 pcs
+17. `43011`: Lionel Messi – Soccer Highlights (Editions) - 500 pcs
+
+*Retired/Withdrawn from active radar:* `10497` (Galaxy Explorer), `42143` (Ferrari Daytona SP3), `21325` (Medieval Blacksmith).
+
+---
+
 ## Scan Metadata
 
 - Generated: 11-09-2026
+- Last Catalog Update: 12-09-2026 (Added 10303 Loop Coaster, 10333 Barad-dûr, 75419 Death Star, 43011 Messi Highlights)
 - Mode: RIPER-5 Phase Program
 - Specification: `Especificaciones.md`
+
+---
+
+## Official Build Photography & Image Extraction Workflow
+
+For existing and all future reviews, each Lego set features official high-definition build and assembly photography:
+- `imageUrl`: Primary high-resolution assembled model hero view.
+- `galleryImages`: Array of `{ url, caption, alt? }` featuring internal gearboxes, frame rigidity, play features, and subassemblies extracted directly from the official LEGO product page.
+- Rendered via `<BuildGallery />` on review pages and previewed on `<SetSpecsCard />` and homepage cards.
+
+### CLI Automation for Future Sets
+To extract, verify, and format official build images for any new LEGO set:
+```bash
+node scripts/extract_lego_images.mjs <setNumber> <legoProductUrl>
+```
+This tool queries the LEGO CDN, filters high-res assets (`Prod`, `alt`, `SEC0`, `SKROLL`), verifies live HTTP 200 availability via parallel requests, and prints the formatted `galleryImages` block for `scripts/write_posts.mjs`.

@@ -1,9 +1,15 @@
 import { db } from "./index";
-import { legoSets, posts, affiliateLinks } from "./schema";
+import { legoSets, posts, affiliateLinks, clickEvents } from "./schema";
 import { SAMPLE_SETS, SAMPLE_POSTS } from "../lib/posts";
 
 async function main() {
   console.log("Iniciando sembrado de datos en la base de datos de TheBrickReview...");
+
+  // 0. Limpiar tablas para sincronizar exactamente con el catálogo actual
+  await db.delete(clickEvents);
+  await db.delete(affiliateLinks);
+  await db.delete(posts);
+  await db.delete(legoSets);
 
   // 1. Insertar Sets
   for (const set of Object.values(SAMPLE_SETS)) {
@@ -28,6 +34,7 @@ async function main() {
           name: set.name,
           officialPriceCents: set.officialPriceCents,
           isRetired: set.isRetired,
+          difficulty: set.difficulty,
         },
       });
 
@@ -46,7 +53,14 @@ async function main() {
             internalSlug: link.internalSlug,
             isActive: link.isActive,
           })
-          .onConflictDoNothing();
+          .onConflictDoUpdate({
+            target: affiliateLinks.id,
+            set: {
+              destinationUrl: link.destinationUrl,
+              retailerName: link.retailerName,
+              isActive: link.isActive,
+            },
+          });
       }
     }
   }
