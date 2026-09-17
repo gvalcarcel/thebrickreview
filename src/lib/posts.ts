@@ -2545,3 +2545,16 @@ export async function getPostsByCategory(categorySlug: string): Promise<PostWith
     (p) => p.legoSet?.lineTheme.toLowerCase() === norm
   );
 }
+
+export function getAffiliateLinkBySlug(slug: string): AffiliateLink | null {
+  for (const set of Object.values(SAMPLE_SETS)) {
+    if (set.affiliateLinks && Array.isArray(set.affiliateLinks)) {
+      const match = set.affiliateLinks.find((l) => l.internalSlug === slug && l.isActive);
+      if (match) {
+        return match;
+      }
+    }
+  }
+  return null;
+}
+
